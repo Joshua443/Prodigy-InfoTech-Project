@@ -1,0 +1,34 @@
+# Python code for encrypting images
+
+# take path of image as input
+path = r"C:\Users\Admin\.vscode\first project\py.jpg"
+
+
+# taking encryption key as input
+key = int(input('Enter encryption key of image : '))
+
+# print image path and key
+print('The path of the file is : ' + path)
+print(key)
+
+# open file for reading purpose
+Fil = open(path, 'rb')
+
+# Storing image data in a variable
+image = Fil.read()
+Fil.close()
+
+# converting image into bytearray to perform easy encryption on numeric data
+image = bytearray(image)
+
+# performing XOR operation on each value of bytearray
+for index, values in enumerate(image):
+    image[index] = values ^ key
+
+# opening file for writing
+Fil = open(path, "wb")
+
+# writing encrypted data in image
+Fil.write(image)
+Fil.close()
+print('Image encryption/decryption completed.....')
